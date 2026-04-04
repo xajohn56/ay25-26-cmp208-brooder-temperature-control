@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html id="top"> <head>
+    <title>Dashboard | SALCC</title>
+    <link rel="icon" type="image/png" href="images/salcc_black.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html"><img src="images/salcc_black.png" class="logo"></a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="temperature.html">Temperature</a>
+        <a href="nutrition.html">Nutrition</a>
+        <a href="monitoring.html">Monitoring</a>
+    </div>
+    <div class="user-menu" onclick="toggleMenu()">
+        <img src="https://ui-avatars.com/api/?name=User&background=00796b&color=fff" class="profile-img">
+    </div>
+</div>
+
+<div class="container">
+    <h1>System Overview</h1>
+    <div class="cards">
+        <a href="temperature.html" class="card-link">
+            <div class="card">Temperature Status<strong>STABLE</strong></div>
+        </a>
+        <a href="monitoring.html" class="card-link">
+            <div class="card">Active Alerts<strong>NONE</strong></div>
+        </a>
+        <a href="nutrition.html" class="card-link">
+            <div class="card">Water Level<strong>60%</strong></div>
+        </a>
+        <a href="nutrition.html" class="card-link">
+            <div class="card">Feed Level<strong>45%</strong></div>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-left">
+        <p><strong>SALCC Helpdesk</strong></p>
+        <p>Phone: (758) 457-7300</p>
+        <p>Email: elearning@salcc.edu.lc</p>
+    </div>
+    <div class="footer-right">
+        <a href="#top"><img src="images/salcc_black.png" class="footer-logo"></a>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
