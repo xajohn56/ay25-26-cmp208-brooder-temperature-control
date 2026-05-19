@@ -1,1 +1,53 @@
+#libraries
+import time
+from machine import I2C, Pin
+from I2C_LCD import I2CLcd
+from dht11 import DHT11, InvalidChecksum  
+  
+#Variables    
+relay = Pin(14, Pin.OUT)        
+pin = Pin(7, Pin.OUT, Pin.PULL_DOWN)
+dht = DHT11(pin)
+i2c = I2C(1, sda=Pin(10), scl=Pin(11), freq=400000)
+devices = i2c.scan()
+lcd = I2CLcd(i2c, devices[0], 2, 16)
+
+relayStatus = "OFF"
+time.sleep(1)
+
+try:
+    while True:
+        #reading temperature and humidity
+        temp = int(dht.temperature)
+        humi = int(dht.humidity)
+
+        #hard code for relay control
+        if temp >= 35:
+            relay.value(0)
+            relayStatus = "OFF"
+        else:
+            relay.value(1)
+            relayStatus = "ON"
+
+        #LCD outputs
+        lcd.clear()
+        lcd.move_to(0, 0)
+        lcd.putstr("Temp: ")
+        lcd.putstr(str(temp))
+        lcd.putstr(" C")
+        lcd.move_to(0, 1)
+        lcd.putstr("Humi: ")
+        lcd.putstr(str(humi))
+        lcd.putstr(" %")
+        lcd.move_to(11, 0)
+        lcd.putstr("L:")
+        lcd.putstr(str(relayStatus))
+        time.sleep_ms(100)
+
+            
+        time.sleep(2)
+    
+except InvalidChecksum:
+    print("DHT11 data error!")
+
 
